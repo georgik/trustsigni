@@ -1,0 +1,37 @@
+<!doctype html>
+<html ng-app="managementApp">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.5/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="javascripts/angularjs/ng-grid-2.0.2.min.js"></script>
+    <script src="javascripts/petition/manage.js"></script>
+    <link rel="stylesheet" href="stylesheets/ng-grid.css" type="text/css" />
+    <style>
+        body {
+            font-family:"Lucida Grande", Verdana, Lucida, Helvetica, Arial, sans-serif;
+        }
+        .gridStyle {
+            border: 1px solid rgb(212,212,212);
+            width: 100%;
+            height: 800px;
+        }
+    </style>
+</head>
+<body ng-controller="ManagementController">
+<h1>Správa petícii</h1>
+<form>
+    <label for="actName">Meno akcie:</label>
+    <input type="text" id="actName" ng-model="actName" />
+    <label for="secret">Heslo:</label>
+    <input type="password" id="secret" ng-model="secret"/>
+    <input type="button" value="Aktualizovať" ng-click="updateButtonClickHandler()"/>
+    <input type="button" value="Export CSV" ng-click="exportButtonClickHandler()" />
+</form>
+<div>Počet signatárov petície: {{count}}</div>
+<textarea cols="120" rows="25" ng-show="isExportVisible" ng-model="exportString"></textarea>
+
+<div class="gridStyle" ng-grid="gridOptions"></div>
+
+</body>
+</html>
